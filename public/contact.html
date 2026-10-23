@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ask about piano lessons, concerts, private events or anything else. Ive answers every message himself.">
+<title>Contact | Ive</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar has-menu">
+    <a href="index.html" class="mark">Ive</a>
+    <nav aria-label="Main" id="site-nav">
+        <a href="index.html#about">About</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <div class="nav-extra">
+            <a href="mailto:hello@ivepiano.com">hello@ivepiano.com</a>
+            <a href="tel:+31612345678">+31 6 12 34 56 78</a>
+        </div>
+    </nav>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menu</span></button>
+</header>
+
+<main id="main">
+
+    <section class="page-head">
+        <div>
+            <p class="eyebrow">Contact — lessons, concerts, everything else</p>
+            <h1>Write to <span class="nowrap"><span class="circled">me</span>.</span></h1>
+        </div>
+        <div class="lede">
+            <p>Lessons, a concert booking, a collaboration, a question about a piece you're stuck on — it all lands in the same inbox, and I read every message myself.</p>
+            <div class="quick">
+                <a href="mailto:hello@ivepiano.com" class="btn ghost">Email</a>
+                <a href="tel:+31612345678" class="btn ghost">Call</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-page">
+        <aside class="contact-side">
+            <ul class="rows">
+                <li><span>Email</span><a href="mailto:hello@ivepiano.com">hello@ivepiano.com</a></li>
+                <li><span>Phone</span><a href="tel:+31612345678">+31 6 12 34 56 78</a></li>
+                <li><span>Studio</span><span>Amsterdam-Oost<br>address shared on booking</span></li>
+                <li><span>Replies</span><span>Within two working days</span></li>
+            </ul>
+            <div>
+                <h3>What helps me answer</h3>
+                <ul class="helps">
+                    <li>For lessons: your age group, how long you've played, and what you'd love to be able to play.</li>
+                    <li>For events: the date, the city, the room, and roughly how many guests.</li>
+                    <li>For press: your deadline and the publication.</li>
+                </ul>
+            </div>
+            <figure class="frame-mount"><img src="images/portrait-piano.jpg" alt="Ive standing at a grand piano" class="bw"></figure>
+        </aside>
+
+        <div class="form-wrap">
+            <form class="form" id="inquiry" novalidate>
+                <fieldset class="full">
+                    <legend>What is it about? <span class="req">*</span></legend>
+                    <div class="topics">
+                        <label><input type="radio" name="topic" value="lessons" checked><span>Lessons</span></label>
+                        <label><input type="radio" name="topic" value="booking"><span>Concert / booking</span></label>
+                        <label><input type="radio" name="topic" value="press"><span>Press &amp; collabs</span></label>
+                        <label><input type="radio" name="topic" value="other"><span>Something else</span></label>
+                    </div>
+                </fieldset>
+
+                <label><span>Your name <span class="req">*</span></span><input type="text" name="name" autocomplete="name" required></label>
+                <label><span>Email <span class="req">*</span></span><input type="email" name="email" autocomplete="email" required></label>
+                <label><span>Phone (optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
+                <label><span>Preferred language</span>
+                    <select name="language"><option>English</option><option>Nederlands</option></select>
+                </label>
+
+                <div class="topic-fields" data-for="lessons">
+                    <label><span>The lessons are for</span>
+                        <select name="student"><option>Me (adult)</option><option>My child (under 16)</option><option>A teenager (16–17)</option></select>
+                    </label>
+                    <label><span>Current level</span>
+                        <select name="level"><option>Never played</option><option>Played as a child, stopped</option><option>Some experience, reading music</option><option>Advanced / preparing auditions</option></select>
+                    </label>
+                    <label class="full"><span>Where</span>
+                        <select name="where"><option>In the studio, Amsterdam</option><option>Online</option><option>Not sure yet</option></select>
+                    </label>
+                </div>
+
+                <div class="topic-fields" data-for="booking" hidden>
+                    <label><span>Type of event</span>
+                        <select name="event_type"><option>Wedding or ceremony</option><option>House concert</option><option>Reception or dinner</option><option>Company event</option><option>Festival or concert series</option><option>Other</option></select>
+                    </label>
+                    <label><span>Date</span><input type="date" name="event_date"></label>
+                    <label><span>City / venue</span><input type="text" name="venue"></label>
+                    <label><span>Guests (approx.)</span><input type="number" name="guests" min="1" inputmode="numeric"></label>
+                </div>
+
+                <div class="topic-fields" data-for="press" hidden>
+                    <label><span>Publication / organisation</span><input type="text" name="org"></label>
+                    <label><span>Deadline</span><input type="date" name="deadline"></label>
+                </div>
+
+                <label class="full"><span>Your message <span class="req">*</span></span>
+                    <textarea name="message" required placeholder="Where are you with the piano — even if the answer is &ldquo;nowhere yet&rdquo;."></textarea>
+                </label>
+
+                <!-- honeypot: invisible to people, bots fill it in -->
+                <label class="hp" aria-hidden="true"><span>Website</span><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+                <label class="check full">
+                    <input type="checkbox" name="privacy" required>
+                    <span>I've read the <a href="privacy.html">privacy policy</a> and understand my details are used only to reply to this message. <span class="req">*</span></span>
+                </label>
+
+                <div class="form-foot full">
+                    <small>Fields marked <span class="req">*</span> are required. Messages are kept for up to 12 months, then deleted unless we start working together.</small>
+                    <button type="submit" class="btn">Send message</button>
+                </div>
+                <p class="form-error full" id="form-error" role="alert" hidden>Something went wrong and the message was not sent. Please try again, or write directly to <a href="mailto:hello@ivepiano.com">hello@ivepiano.com</a>.</p>
+            </form>
+
+            <div class="sent" id="sent" hidden tabindex="-1">
+                <h2>Thank you — <em>it's on its way</em>.</h2>
+                <p>I'll get back to you within two working days. If it's urgent, call or send a message to +31 6 12 34 56 78.</p>
+                <a href="index.html" class="link-arrow">Back to the home page</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="faq">
+        <p class="label">Often asked</p>
+        <details open data-auto>
+            <summary><h3>Do I need my own piano?</h3></summary>
+            <p>For weekly lessons, yes — but a good digital piano with weighted keys is perfectly fine for the first year or two. I'm happy to advise before you buy or rent.</p>
+        </details>
+        <details open data-auto>
+            <summary><h3>Can parents sit in?</h3></summary>
+            <p>Always, for the first lessons. After that it depends on the child — some play better with an audience, some without. We'll decide together.</p>
+        </details>
+        <details open data-auto>
+            <summary><h3>How far ahead should I book an event?</h3></summary>
+            <p>For weddings and festivals, three to six months. For house concerts and receptions a few weeks is often enough — just ask.</p>
+        </details>
+    </section>
+
+</main>
+
+<footer>
+    <div class="foot-grid">
+        <div>
+            <a href="index.html" class="mark">Ive</a>
+            <p>Classical pianist and piano teacher. Studio in Amsterdam-Oost; lessons in English and Dutch, in person and online.</p>
+        </div>
+        <div>
+            <h4>Site</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Elsewhere</h4>
+            <ul>
+                <li><a href="mailto:hello@ivepiano.com">hello@ivepiano.com</a></li>
+                <li><a href="tel:+31612345678">+31 6 12 34 56 78</a></li>
+                <li><a href="#" rel="noopener">Instagram</a></li>
+                <li><a href="#" rel="noopener">YouTube</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="terms.html">Terms &amp; conditions</a></li>
+                <li><a href="privacy.html">Privacy policy</a></li>
+                <li><a href="cookies.html">Cookie policy</a></li>
+                <li>KvK 00000000 &middot; Amsterdam</li>
+            </ul>
+        </div>
+    </div>
+    <div class="foot-base">
+        <span>&copy; Ive &mdash; all rights reserved</span>
+        <span>This site sets no cookies and runs no trackers</span>
+    </div>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

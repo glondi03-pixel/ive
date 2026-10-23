@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Events editor | Ive</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin">
+
+<header class="bar">
+    <a href="/" class="mark">Ive <span class="adm-tag">Events editor</span></a>
+    <nav aria-label="Admin">
+        <a href="/events.html" target="_blank" rel="noopener">View events page</a>
+        <a href="/cdn-cgi/access/logout">Log out</a>
+    </nav>
+</header>
+
+<p class="adm-banner" id="banner" hidden></p>
+
+<main class="adm">
+    <aside class="adm-side">
+        <button type="button" class="btn adm-new" id="new">+ New event</button>
+        <div id="lists"></div>
+    </aside>
+
+    <section class="adm-main">
+        <div class="adm-empty" id="empty">
+            <p class="label">Nothing selected</p>
+            <h1>Pick an event on the left, or add a new one.</h1>
+            <p>Changes go live on the website as soon as you press <b>Save &amp; publish</b>. Past events move to &ldquo;Recently&rdquo; on their own the day after — there's no need to delete them.</p>
+        </div>
+
+        <form class="form adm-form" id="editor" hidden autocomplete="off">
+            <div class="adm-head full">
+                <p class="label" id="ed-kind">Event</p>
+                <button type="button" class="adm-delete" id="delete">Delete this event</button>
+            </div>
+
+            <label><span>Date <span class="req">*</span></span><input type="date" name="date" required></label>
+            <label><span>City <span class="req">*</span></span><input type="text" name="city" required maxlength="80" placeholder="Amsterdam"></label>
+
+            <label class="full"><span>Title <span class="req">*</span></span><input type="text" name="title" required maxlength="200" placeholder="*Mirrors* — a solo recital"></label>
+            <p class="adm-hint full">Put a word between *asterisks* to show it in italics on the site.</p>
+
+            <label><span>Venue</span><input type="text" name="venue" maxlength="120" placeholder="Zaal Oost"></label>
+            <label><span>Start time</span><input type="time" name="time"></label>
+            <label><span>Doors open</span><input type="time" name="doors"></label>
+            <label><span>Duration (minutes)</span><input type="number" name="durationMin" min="1" max="600" inputmode="numeric" placeholder="90"></label>
+
+            <label class="full"><span>Description</span><textarea name="description" maxlength="1500" placeholder="One or two sentences about the evening."></textarea></label>
+
+            <fieldset class="full adm-prog">
+                <legend>Programme <span class="adm-opt">(optional — shown when this is the next concert)</span></legend>
+                <div id="prog"></div>
+                <button type="button" class="adm-add" id="prog-add">+ Add a piece</button>
+            </fieldset>
+
+            <label><span>Tickets / price</span><input type="text" name="price" maxlength="120" placeholder="€ 18 / € 12 students"></label>
+            <label><span>Accessibility</span><input type="text" name="access" maxlength="120" placeholder="Step-free, seated"></label>
+            <label class="full"><span>Status line</span><input type="text" name="status" maxlength="80" placeholder="Tickets on sale · Sold out · Free entry"></label>
+
+            <label><span>Button text</span><input type="text" name="linkLabel" maxlength="40" placeholder="Tickets"></label>
+            <label><span>Button link</span><input type="url" name="linkUrl" maxlength="500" placeholder="https://…"></label>
+
+            <fieldset class="full">
+                <legend>Photo</legend>
+                <div class="adm-photos" id="photos"></div>
+            </fieldset>
+        </form>
+    </section>
+</main>
+
+<div class="adm-savebar">
+    <span id="state" aria-live="polite">Loading…</span>
+    <button type="button" class="btn" id="save" disabled>Save &amp; publish</button>
+</div>
+
+<script src="/data/events.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
