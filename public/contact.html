@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vragen over pianolessen, concerten of boekingen. Ive beantwoordt elk bericht zelf.">
+<title>Contact | Ive Snijders</title>
+<link rel="alternate" hreflang="nl" href="contact.html">
+<link rel="alternate" hreflang="en" href="en/contact.html">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<header class="bar has-menu">
+    <a href="index.html" class="mark">Ive</a>
+    <nav aria-label="Main" id="site-nav">
+        <a href="index.html#about">Over</a>
+        <a href="teaching.html">Lessen</a>
+        <a href="events.html">Concerten</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <div class="nav-extra">
+            <a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a>
+            <a data-ch="phone" href="tel:+3161881945"><span data-c="phone">+31 61881945</span></a>
+        </div>
+    </nav>
+    <div class="lang" aria-label="Taal"><b>NL</b><a href="en/contact.html" hreflang="en" lang="en">EN</a></div>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-open="Menu" data-close="Sluiten"><span>Menu</span></button>
+</header>
+
+<main id="main">
+
+    <section class="page-head">
+        <div>
+            <p class="eyebrow">Contact — lessen, concerten en al het andere</p>
+            <h1>Stuur me een <span class="nowrap"><span class="accent-word">bericht</span>.</span></h1>
+        </div>
+        <div class="lede">
+            <p>Lessen, een concertboeking, begeleiding of een vraag over een stuk waar je op vastloopt — alles komt in dezelfde inbox terecht, en ik lees elk bericht zelf.</p>
+            <div class="quick">
+                <a data-ch="email" href="mailto:ive.snijders@gmail.com" class="btn ghost">E-mail</a>
+                <a data-ch="phone" href="tel:+3161881945" class="btn ghost">Bellen</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-page">
+        <aside class="contact-side">
+            <ul class="rows">
+                <li><span>E-mail</span><a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a></li>
+                <li><span>Telefoon</span><a data-ch="phone" href="tel:+3161881945"><span data-c="phone">+31 61881945</span></a></li>
+                <li><span>Studio</span><span>Maastricht &amp; online</span></li>
+                <li><span>Reactie</span><span>Binnen twee werkdagen</span></li>
+            </ul>
+            <div>
+                <h3>Dit helpt mij bij mijn antwoord</h3>
+                <ul class="helps">
+                    <li>Voor lessen: je leeftijdsgroep, hoe lang je al speelt en wat je graag zou willen kunnen spelen.</li>
+                    <li>Voor optredens: de datum, de plaats, de ruimte en ongeveer hoeveel gasten.</li>
+                    <li>Voor begeleiding: het repertoire en de datum van het concert of examen.</li>
+                </ul>
+            </div>
+            <figure class="frame-mount"><img src="images/portrait-piano.jpg" alt="Ive staand bij een vleugel" class="bw"></figure>
+        </aside>
+
+        <div class="form-wrap">
+            <form class="form" id="inquiry" novalidate>
+                <fieldset class="full">
+                    <legend>Waar gaat het over? <span class="req">*</span></legend>
+                    <div class="topics">
+                        <label><input type="radio" name="topic" value="lessons" checked><span>Lessen</span></label>
+                        <label><input type="radio" name="topic" value="booking"><span>Concert / boeking</span></label>
+                        <label><input type="radio" name="topic" value="press"><span>Pers &amp; samenwerking</span></label>
+                        <label><input type="radio" name="topic" value="other"><span>Iets anders</span></label>
+                    </div>
+                </fieldset>
+
+                <label><span>Je naam <span class="req">*</span></span><input type="text" name="name" autocomplete="name" required></label>
+                <label><span>E-mail <span class="req">*</span></span><input type="email" name="email" autocomplete="email" required></label>
+                <label><span>Telefoon (optioneel)</span><input type="tel" name="phone" autocomplete="tel"></label>
+                <label><span>Voorkeurstaal</span>
+                    <select name="language"><option>Nederlands</option><option>English</option></select>
+                </label>
+
+                <div class="topic-fields" data-for="lessons">
+                    <label><span>De lessen zijn voor</span>
+                        <select name="student"><option>Mijzelf (volwassene)</option><option>Mijn kind (jonger dan 16)</option><option>Een tiener (16–17)</option></select>
+                    </label>
+                    <label><span>Huidig niveau</span>
+                        <select name="level"><option>Nog nooit gespeeld</option><option>Als kind gespeeld, daarna gestopt</option><option>Enige ervaring, ik lees noten</option><option>Gevorderd / voorbereiding toelatingsexamen</option></select>
+                    </label>
+                    <label class="full"><span>Waar</span>
+                        <select name="where"><option>In de studio, Maastricht</option><option>Online</option><option>Weet ik nog niet</option></select>
+                    </label>
+                </div>
+
+                <div class="topic-fields" data-for="booking" hidden>
+                    <label><span>Soort evenement</span>
+                        <select name="event_type"><option>Bruiloft of ceremonie</option><option>Huiskamerconcert</option><option>Receptie of diner</option><option>Bedrijfsevenement</option><option>Festival of concertserie</option><option>Begeleiding</option><option>Anders</option></select>
+                    </label>
+                    <label><span>Datum</span><input type="date" name="event_date"></label>
+                    <label><span>Plaats / locatie</span><input type="text" name="venue"></label>
+                    <label><span>Aantal gasten (ca.)</span><input type="number" name="guests" min="1" inputmode="numeric"></label>
+                </div>
+
+                <div class="topic-fields" data-for="press" hidden>
+                    <label><span>Medium / organisatie</span><input type="text" name="org"></label>
+                    <label><span>Deadline</span><input type="date" name="deadline"></label>
+                </div>
+
+                <label class="full"><span>Je bericht <span class="req">*</span></span>
+                    <textarea name="message" required placeholder="Waar sta je met piano — ook als het antwoord &lsquo;nog nergens&rsquo; is."></textarea>
+                </label>
+
+                <!-- honeypot: onzichtbaar voor mensen, bots vullen het in -->
+                <label class="hp" aria-hidden="true"><span>Website</span><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+                <label class="check full">
+                    <input type="checkbox" name="privacy" required>
+                    <span>Ik heb de <a href="privacy.html">privacyverklaring</a> gelezen en begrijp dat mijn gegevens alleen worden gebruikt om op dit bericht te reageren. <span class="req">*</span></span>
+                </label>
+
+                <div class="form-foot full">
+                    <small>Velden met <span class="req">*</span> zijn verplicht. Berichten worden maximaal 12 maanden bewaard en daarna verwijderd, tenzij we gaan samenwerken.</small>
+                    <button type="submit" class="btn">Verstuur bericht</button>
+                </div>
+                <p class="form-error full" id="form-error" role="alert" hidden>Er ging iets mis en het bericht is niet verstuurd. Probeer het opnieuw of mail direct naar <a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a>.</p>
+            </form>
+
+            <div class="sent" id="sent" hidden tabindex="-1">
+                <h2>Dank je — <em>je bericht is onderweg</em>.</h2>
+                <p>Ik reageer binnen twee werkdagen. Is het dringend? Bel of app dan naar <span data-c="phone">+31 61881945</span>.</p>
+                <a href="index.html" class="link-arrow">Terug naar de homepage</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="faq">
+        <p class="label">Veelgestelde vragen</p>
+        <details open data-auto>
+            <summary><h3>Heb ik een eigen piano nodig?</h3></summary>
+            <p>Voor wekelijkse lessen wel — maar een goede digitale piano met gewogen toetsen is de eerste jaar of twee prima. Ik denk graag met je mee voordat je er een koopt of huurt.</p>
+        </details>
+        <details open data-auto>
+            <summary><h3>Mogen ouders meekijken?</h3></summary>
+            <p>Altijd, zeker bij de eerste lessen. Daarna hangt het van het kind af — sommige kinderen spelen beter met publiek, andere juist zonder. Dat bepalen we samen.</p>
+        </details>
+        <details open data-auto>
+            <summary><h3>Hoe ver van tevoren boek ik een optreden?</h3></summary>
+            <p>Voor bruiloften en festivals drie tot zes maanden. Voor huiskamerconcerten en recepties is een paar weken vaak genoeg — vraag het gewoon.</p>
+        </details>
+    </section>
+
+</main>
+
+<footer>
+    <div class="foot-grid">
+        <div>
+            <a href="index.html" class="mark">Ive</a>
+            <p>Klassiek pianist en pianodocent. Studio in Maastricht; lessen in het Nederlands en Engels, in de studio en online.</p>
+        </div>
+        <div>
+            <h4>Site</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teaching.html">Lessen</a></li>
+                <li><a href="events.html">Concerten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a></li>
+                <li><a data-ch="phone" href="tel:+3161881945"><span data-c="phone">+31 61881945</span></a></li>
+                <li><span data-c="address">Welsdaal 146C, Maastricht</span></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Juridisch</h4>
+            <ul>
+                <li><a href="terms.html">Algemene voorwaarden</a></li>
+                <li><a href="privacy.html">Privacyverklaring</a></li>
+                <li><a href="cookies.html">Cookiebeleid</a></li>
+                <li>KvK <span data-c="kvk">82057990</span></li>
+                <li>Btw <span data-c="btw">NL003622875B09</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="foot-base">
+        <span>&copy; Ive Snijders</span>
+        <span>Deze site plaatst geen cookies en gebruikt geen trackers</span>
+    </div>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

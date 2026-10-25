@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Komende recitals en concerten van pianist Ive Snijders, en hoe je hem boekt voor een optreden.">
+<title>Concerten | Ive Snijders</title>
+<link rel="alternate" hreflang="nl" href="events.html">
+<link rel="alternate" hreflang="en" href="en/events.html">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-stage">
+
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<header class="bar has-menu">
+    <a href="index.html" class="mark">Ive</a>
+    <nav aria-label="Main" id="site-nav">
+        <a href="index.html#about">Over</a>
+        <a href="teaching.html">Lessen</a>
+        <a href="events.html" aria-current="page">Concerten</a>
+        <a href="contact.html">Contact</a>
+        <div class="nav-extra">
+            <a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a>
+            <a data-ch="phone" href="tel:+3161881945"><span data-c="phone">+31 61881945</span></a>
+        </div>
+    </nav>
+    <div class="lang" aria-label="Taal"><b>NL</b><a href="en/events.html" hreflang="en" lang="en">EN</a></div>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-open="Menu" data-close="Sluiten"><span>Menu</span></button>
+</header>
+
+<main id="main">
+
+    <section class="page-head">
+        <div>
+            <p class="eyebrow">Concerten &amp; recitals</p>
+            <h1>Op het <span class="nowrap"><span class="accent-word">podium</span>.</span></h1>
+        </div>
+        <div class="lede">
+            <p>Solorecitals, kamermuziek en begeleiding, van concertzaal tot huiskamer. Hieronder staan de data; nieuwe concerten worden toegevoegd zodra ze vastliggen.</p>
+        </div>
+    </section>
+
+    <!-- Alles tot en met "Recent" wordt door script.js opgebouwd vanuit data/events.js -->
+    <article class="featured" id="ev-featured" hidden></article>
+
+    <section class="section">
+        <div class="sec-head">
+            <h2>Binnenkort</h2>
+            <p class="label" id="ev-count"></p>
+        </div>
+        <ol class="ev-list" id="ev-upcoming"></ol>
+        <div class="ev-empty" id="ev-empty" hidden>
+            <p>Er staan op dit moment geen concerten gepland. Nieuwe data verschijnen hier zodra ze vastliggen.</p>
+            <a href="#booking" class="link-arrow">Boek een optreden</a>
+        </div>
+        <noscript><p class="ev-empty">De concertagenda heeft JavaScript nodig. Mail voor data naar <a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a>.</p></noscript>
+    </section>
+
+    <section class="past" id="ev-past-wrap">
+        <div class="sec-head flat"><h2>Recent</h2></div>
+        <ul class="past-list" id="ev-past"></ul>
+    </section>
+
+    <section class="book-band" id="booking">
+        <figure><img src="images/backstage.jpg" alt="Ive backstage, in de spiegel terwijl een fotograaf werkt" class="bw"></figure>
+        <div class="inner">
+            <p class="label">Boekingen</p>
+            <h2>Een pianist voor <span class="accent-word">jouw</span> evenement?</h2>
+            <p>Ik speel als solist, kamermusicus en begeleider — op recepties, bruiloften, huiskamerconcerten, bedrijfsevenementen en festivals. Vertel me de datum, de ruimte en de gelegenheid; ik stel een programma en een offerte voor je samen.</p>
+            <ul>
+                <li>Bruiloften &amp; ceremonies</li>
+                <li>Huiskamerconcerten</li>
+                <li>Recepties &amp; diners</li>
+                <li>Festivals &amp; concertseries</li>
+                <li>Bedrijfsevenementen</li>
+                <li>Begeleiding van zangers &amp; instrumentalisten</li>
+            </ul>
+            <div><a href="contact.html?topic=booking" class="btn">Vraag een datum aan</a></div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="foot-grid">
+        <div>
+            <a href="index.html" class="mark">Ive</a>
+            <p>Klassiek pianist en pianodocent. Studio in Maastricht; lessen in het Nederlands en Engels, in de studio en online.</p>
+        </div>
+        <div>
+            <h4>Site</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teaching.html">Lessen</a></li>
+                <li><a href="events.html">Concerten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a data-ch="email" href="mailto:ive.snijders@gmail.com"><span data-c="email">ive.snijders@gmail.com</span></a></li>
+                <li><a data-ch="phone" href="tel:+3161881945"><span data-c="phone">+31 61881945</span></a></li>
+                <li><span data-c="address">Welsdaal 146C, Maastricht</span></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Juridisch</h4>
+            <ul>
+                <li><a href="terms.html">Algemene voorwaarden</a></li>
+                <li><a href="privacy.html">Privacyverklaring</a></li>
+                <li><a href="cookies.html">Cookiebeleid</a></li>
+                <li>KvK <span data-c="kvk">82057990</span></li>
+                <li>Btw <span data-c="btw">NL003622875B09</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="foot-base">
+        <span>&copy; Ive Snijders</span>
+        <span>Deze site plaatst geen cookies en gebruikt geen trackers</span>
+    </div>
+</footer>
+<script src="data/events.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
