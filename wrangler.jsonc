@@ -18,12 +18,8 @@
 
     // keep variables you set in the dashboard (ACCESS_TEAM_DOMAIN, ACCESS_AUD,
     // CONTACT_TO, …) instead of wiping them on every deploy
-    "keep_vars": true
-
-    // STEP 2 — storage for the concerts, fees and contact details. After creating the KV namespace
-    // in Cloudflare, put a comma after `true` above, remove the two slashes in
-    // front of the three lines below, and paste the namespace ID:
-    // "kv_namespaces": [
-    //     { "binding": "EVENTS", "id": "PASTE-THE-KV-NAMESPACE-ID-HERE" }
-    // ]
+    "keep_vars": true,
+    "kv_namespaces": [
+        { "binding": "EVENTS", "id": "f20953f340314c7cb650f8a60b688583" }
+    ]
 }
