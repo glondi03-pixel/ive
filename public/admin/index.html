@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Website editor | Ive</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin">
+
+<header class="bar">
+    <a href="/" class="mark">Ive <span class="adm-tag">Website editor</span></a>
+    <nav aria-label="Admin">
+        <a href="/" target="_blank" rel="noopener">View website</a>
+        <a href="/cdn-cgi/access/logout">Log out</a>
+    </nav>
+</header>
+
+<div class="adm-tabs" role="tablist" aria-label="What to edit">
+    <button type="button" role="tab" id="tab-events" aria-controls="panel-events" aria-selected="true">Concerts <span class="dot" hidden></span></button>
+    <button type="button" role="tab" id="tab-fees" aria-controls="panel-fees" aria-selected="false">Fees <span class="dot" hidden></span></button>
+    <button type="button" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false">Contact details <span class="dot" hidden></span></button>
+    <button type="button" role="tab" id="tab-legal" aria-controls="panel-legal" aria-selected="false">Legal texts <span class="dot" hidden></span></button>
+</div>
+
+<p class="adm-banner" id="banner" hidden></p>
+
+<!-- Concerts -->
+<main class="adm" id="panel-events" role="tabpanel" aria-labelledby="tab-events">
+    <aside class="adm-side">
+        <button type="button" class="btn adm-new" id="new">+ New concert</button>
+        <div id="lists"></div>
+    </aside>
+
+    <section class="adm-main">
+        <div class="adm-empty" id="empty">
+            <p class="label">Nothing selected</p>
+            <h1>Pick a concert on the left, or add a new one.</h1>
+            <p>Changes go live on the website as soon as you press <b>Save &amp; publish</b>. Past concerts move to &ldquo;Recently&rdquo; on their own the day after — there's no need to delete them.</p>
+        </div>
+
+        <form class="form adm-form" id="editor" hidden autocomplete="off">
+            <div class="adm-head full">
+                <p class="label" id="ed-kind">Concert</p>
+                <button type="button" class="adm-delete" id="delete">Delete this concert</button>
+            </div>
+
+            <p class="adm-hint adm-lead full">The texts below are in <b>Dutch</b>, the main language of the site. English versions go in the box further down. Only the date and title are needed — anything left empty simply doesn't show.</p>
+
+            <label><span>Date <span class="req">*</span></span><input type="date" name="date" required></label>
+            <label><span>City</span><input type="text" name="city" maxlength="80" placeholder="Maastricht"></label>
+
+            <label class="full"><span>Title <span class="req">*</span></span><input type="text" name="title" required maxlength="200" placeholder="*Spiegels* — een solorecital"></label>
+            <p class="adm-hint full">Put a word between *asterisks* to show it in italics on the site.</p>
+
+            <label><span>Venue</span><input type="text" name="venue" maxlength="120" placeholder="Zaal Oost"></label>
+            <label><span>Start time</span><input type="time" name="time"></label>
+            <label><span>Doors open</span><input type="time" name="doors"></label>
+            <label><span>Duration (minutes)</span><input type="number" name="durationMin" min="1" max="600" inputmode="numeric" placeholder="90"></label>
+
+            <label class="full"><span>Description</span><textarea name="description" maxlength="1500" placeholder="Een of twee zinnen over de avond."></textarea></label>
+
+            <fieldset class="full adm-prog">
+                <legend>Programme <span class="adm-opt">(optional — shown when this is the next concert)</span></legend>
+                <div id="prog"></div>
+                <button type="button" class="adm-add" id="prog-add">+ Add a piece</button>
+            </fieldset>
+
+            <label><span>Tickets / price</span><input type="text" name="price" maxlength="120" placeholder="€ 18 / € 12 studenten"></label>
+            <label><span>Accessibility</span><input type="text" name="access" maxlength="120" placeholder="Rolstoeltoegankelijk"></label>
+            <label class="full"><span>Status line</span><input type="text" name="status" maxlength="80" placeholder="Kaarten in de verkoop · Uitverkocht · Gratis toegang"></label>
+
+            <label><span>Button text</span><input type="text" name="linkLabel" maxlength="40" placeholder="Kaarten"></label>
+            <label><span>Button link</span><input type="url" name="linkUrl" maxlength="500" placeholder="https://… (no link = no button)"></label>
+
+            <details class="full adm-en">
+                <summary>English version <span class="adm-opt">(optional — where a box is empty, the English page shows the Dutch text)</span></summary>
+                <div class="adm-en-grid">
+                    <label class="full"><span>Title in English</span><input type="text" name="title_en" maxlength="200" placeholder="*Mirrors* — a solo recital"></label>
+                    <label><span>Venue in English</span><input type="text" name="venue_en" maxlength="120" placeholder="usually the same — leave empty"></label>
+                    <label><span>Button text in English</span><input type="text" name="linkLabel_en" maxlength="40" placeholder="Tickets"></label>
+                    <label class="full"><span>Description in English</span><textarea name="description_en" maxlength="1500" placeholder="One or two sentences about the evening."></textarea></label>
+                    <label><span>Tickets / price in English</span><input type="text" name="price_en" maxlength="120" placeholder="€ 18 / € 12 students"></label>
+                    <label><span>Accessibility in English</span><input type="text" name="access_en" maxlength="120" placeholder="Step-free, seated"></label>
+                    <label class="full"><span>Status line in English</span><input type="text" name="status_en" maxlength="80" placeholder="Tickets on sale · Sold out · Free entry"></label>
+                </div>
+            </details>
+
+            <fieldset class="full">
+                <legend>Photo <span class="adm-opt">(click one to use it, or upload your own)</span></legend>
+                <div class="adm-photos" id="photos"></div>
+                <input type="file" id="upload" accept="image/*" hidden>
+                <p class="adm-hint adm-upload-state" id="upload-state" aria-live="polite"></p>
+            </fieldset>
+        </form>
+    </section>
+</main>
+
+<!-- Fees -->
+<main class="adm-page" id="panel-fees" role="tabpanel" aria-labelledby="tab-fees" hidden>
+    <div class="adm-intro">
+        <p class="label">Lessons &amp; fees</p>
+        <h1>The fees table on the Lessons page.</h1>
+        <p>One row per type of lesson, in the order they appear on the site. Only the Dutch name is needed. The English price is only needed when it's written differently (&ldquo;gratis&rdquo; &rarr; &ldquo;free&rdquo;).</p>
+    </div>
+    <div id="fee-list" class="adm-fees form"></div>
+    <button type="button" class="adm-add" id="fee-add">+ Add a row</button>
+</main>
+
+<!-- Contact details -->
+<main class="adm-page" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+    <div class="adm-intro">
+        <p class="label">Contact details</p>
+        <h1>Shown on every page.</h1>
+        <p>In the menu, the footer, the contact page and the terms, privacy and cookie texts — in Dutch and English. Change them here once and they change everywhere.</p>
+    </div>
+    <form class="form adm-form" id="contact-form" autocomplete="off">
+        <label><span>Email <span class="req">*</span></span><input type="email" name="email" required maxlength="200"></label>
+        <label><span>Phone</span><input type="tel" name="phone" maxlength="40" placeholder="+31 6 12345678"></label>
+        <label class="full"><span>Business address <span class="req">*</span></span><input type="text" name="address" required maxlength="200" placeholder="Street 1, City"></label>
+        <label><span>KvK number <span class="req">*</span></span><input type="text" name="kvk" required maxlength="20" inputmode="numeric"></label>
+        <label><span>VAT (btw) number</span><input type="text" name="btw" maxlength="30"></label>
+        <p class="adm-hint adm-lead full">Phone and VAT number may be left empty: the lines that mention them then disappear from the site. Email, address and KvK number are required by Dutch law on a business website.</p>
+        <p class="adm-hint adm-lead full">Messages from the contact form go to the <code>CONTACT_TO</code> address set in Cloudflare, or to the email above if that isn't set.</p>
+    </form>
+</main>
+
+<!-- Legal texts -->
+<main class="adm-page adm-legal" id="panel-legal" role="tabpanel" aria-labelledby="tab-legal" hidden>
+    <div class="adm-intro">
+        <p class="label">Legal texts</p>
+        <h1>Terms, privacy and cookies.</h1>
+        <p>Pick a page and a language. Each section is one numbered article on the website; the contents list builds itself. Before changing anything, open the guide below — it says when a change is needed, who you have to tell, and what must always stay in.</p>
+    </div>
+
+    <div class="adm-legal-bar">
+        <div class="adm-seg" id="legal-pages" role="group" aria-label="Page">
+            <button type="button" data-page="terms" aria-pressed="true">Terms &amp; conditions</button>
+            <button type="button" data-page="privacy" aria-pressed="false">Privacy policy</button>
+            <button type="button" data-page="cookies" aria-pressed="false">Cookie policy</button>
+        </div>
+        <div class="adm-seg" id="legal-langs" role="group" aria-label="Language">
+            <button type="button" data-lang="nl" aria-pressed="true">Nederlands</button>
+            <button type="button" data-lang="en" aria-pressed="false">English</button>
+        </div>
+        <a href="/terms" target="_blank" rel="noopener" class="link-arrow" id="legal-view">View page</a>
+    </div>
+
+    <details class="adm-help adm-guide">
+        <summary>How to change these texts — read this first</summary>
+        <div class="adm-guide-body">
+            <h3>Step by step</h3>
+            <ol>
+                <li><b>Keep a copy first.</b> The editor only keeps the latest version. Before a bigger change, select all the text of the sections you will change and paste it into a document on your computer, with the date.</li>
+                <li><b>Change the Dutch text, then the English one.</b> Both versions must say the same thing. Switch with the Nederlands / English buttons above — they are saved together.</li>
+                <li><b>Check the dates.</b> &ldquo;Last updated&rdquo; changes to this month by itself. &ldquo;In force from&rdquo; you set yourself (see the rules below).</li>
+                <li><b>Press Save &amp; publish</b>, wait a minute, then click <b>View page</b> and read the changed parts on the website — in both languages.</li>
+                <li><b>Tell people when the rules say so</b> (see below), by email to your current students and clients.</li>
+            </ol>
+
+            <h3>When the terms change</h3>
+            <ul>
+                <li>Changes that affect current students — prices, cancellation rules, how and when you invoice — may only start <b>at least one month after you announce them by email</b>. This is promised in the terms themselves (sections &ldquo;Fees &amp; payment&rdquo; <span class="adm-nl">(Tarieven &amp; betaling)</span> and &ldquo;Applicable law &amp; changes&rdquo; <span class="adm-nl">(Toepasselijk recht &amp; wijzigingen)</span>). Set &ldquo;In force from&rdquo; to that date.</li>
+                <li>Students who don't accept a change may stop their lessons from that date — that rule must stay in.</li>
+                <li>Changing prices: change them in the <b>Fees</b> tab. The terms don't mention amounts, so they don't need to change too, but the one-month notice above still applies.</li>
+                <li>Small fixes (a typo, clearer wording without changing what it means) need no announcement.</li>
+            </ul>
+
+            <h3>When the privacy policy must change</h3>
+            <ul>
+                <li>You start using a new service that handles people's data: a new email provider, a booking or payment system, a newsletter, an app or WhatsApp group for students, an accountant, a video-call service. Add it to <b>&ldquo;Who receives your data&rdquo; <span class="adm-nl">(Wie je gegevens ontvangt)</span></b>, and to &ldquo;Transfers outside the EU&rdquo; <span class="adm-nl">(Doorgifte buiten de EU)</span> if the company is outside the EU.</li>
+                <li>You collect new kinds of data (for example date of birth, recordings) or use data for something new: update &ldquo;Data we collect&rdquo; <span class="adm-nl">(Welke gegevens we verwerken)</span>, &ldquo;Purposes and legal bases&rdquo; <span class="adm-nl">(Doelen en grondslagen)</span> and &ldquo;How long we keep your data&rdquo; <span class="adm-nl">(Hoe lang we je gegevens bewaren)</span>.</li>
+                <li>If a change affects data people already gave you, email your current students and clients (the policy promises this).</li>
+            </ul>
+
+            <h3>When the cookie policy must change</h3>
+            <ul>
+                <li>Only when something is added to the website that stores or reads information on visitors' devices: visitor statistics (Google Analytics and similar), embedded YouTube / Vimeo / Spotify / Google Maps, social-media buttons, chat widgets, newsletter sign-up boxes, online payment.</li>
+                <li><b>Important:</b> most of those need the visitor's permission <i>before</i> they load, which means a cookie banner. That is a change to the website itself, not just to this text — ask a web developer, and update this policy and the privacy policy at the same time.</li>
+                <li>Changing concerts, photos, fees or texts in this editor never affects cookies.</li>
+            </ul>
+
+            <h3>What must always stay in</h3>
+            <ul>
+                <li><b>Terms:</b> who you are (name, KvK number, address, email), prices &amp; payment, cancelling, the 14-day right of withdrawal and the model withdrawal form (required for consumers who book online or by email), complaints, applicable law.</li>
+                <li><b>Privacy:</b> who is responsible, which data and why, how long you keep it, who receives it, people's rights, and the right to complain to the Autoriteit Persoonsgegevens.</li>
+                <li><b>Cookies:</b> what is stored on the visitor's device and why — today only the login cookie of this editor, which visitors never get.</li>
+                <li>Keep the <code>{email}</code>, <code>{address}</code>, <code>{kvk}</code> placeholders: they keep your details correct everywhere.</li>
+            </ul>
+
+            <h3>Good habits</h3>
+            <ul>
+                <li>Read all three texts once a year, for example every September before the new season.</li>
+                <li>Links to a section on another page (like <code>[terms](terms.html#t-minors)</code>) keep working when you rename a section. If you delete that section, check the pages that link to it.</li>
+                <li>Not sure whether a change is allowed or needed? Look it up on <a href="https://ondernemersplein.kvk.nl" target="_blank" rel="noopener">ondernemersplein.kvk.nl</a> (terms) or <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a> (privacy and cookies), or ask a lawyer before you publish.</li>
+            </ul>
+        </div>
+    </details>
+
+    <aside class="adm-tip" id="legal-tip" aria-live="polite">
+        <p data-tip="terms"><b>Terms — check before saving:</b> changes for current students start at least one month after you email them about it; set &ldquo;In force from&rdquo; to that date. Keep the right of withdrawal and the model form.</p>
+        <p data-tip="privacy" hidden><b>Privacy — check before saving:</b> is every service that handles people's data listed under &ldquo;Who receives your data&rdquo; <span class="adm-nl">(Wie je gegevens ontvangt)</span>? If the change affects data people already gave you, email them.</p>
+        <p data-tip="cookies" hidden><b>Cookies — check before saving:</b> this text only needs to change when something new on the website stores information on visitors' devices. If that happens, a cookie banner is probably needed too — ask a web developer.</p>
+    </aside>
+
+    <details class="adm-help">
+        <summary>How to format the text</summary>
+        <div class="adm-help-grid">
+            <code>(empty line)</code><span>starts a new paragraph</span>
+            <code>- item</code><span>bullet list (one item per line)</span>
+            <code>1. item</code><span>numbered list</span>
+            <code>**bold**</code><span><b>bold</b></span>
+            <code>[text](https://…)</code><span>link — also to other pages, e.g. <code>[privacy policy](privacy.html)</code></span>
+            <code>| a | b |</code><span>table row; the first row is the header</span>
+            <code>&gt; text</code><span>line inside a framed box (like the withdrawal form)</span>
+            <code>{email} {phone} {address} {kvk} {btw}</code><span>your contact details from the Contact details tab — they update by themselves. A line with an empty {phone} or {btw} is left out.</span>
+        </div>
+    </details>
+
+    <form class="form adm-form adm-legal-doc" id="legal-form" autocomplete="off">
+        <label class="full"><span>Intro (under the page title)</span><textarea name="intro" maxlength="800" rows="3"></textarea></label>
+        <label><span>Last updated</span><input type="text" name="updated" maxlength="40"></label>
+        <label><span>In force from</span><input type="text" name="validFrom" maxlength="40"></label>
+    </form>
+
+    <div id="legal-sections" class="adm-fees form"></div>
+    <button type="button" class="adm-add" id="legal-add">+ Add a section</button>
+</main>
+
+<div class="adm-savebar">
+    <span id="state" aria-live="polite">Loading…</span>
+    <button type="button" class="btn" id="save" disabled>Save &amp; publish</button>
+</div>
+
+<script src="/data/events.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
