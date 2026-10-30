@@ -1,0 +1,34 @@
+// Cloudflare Workers configuration for Ive's website.
+// Cloudflare reads this file on every deploy from GitHub.
+{
+    // must match the Worker's name in the Cloudflare dashboard
+    "name": "ive",
+    "main": "worker/index.js",
+    "compatibility_date": "2025-10-01",
+
+    // the website itself
+    "assets": {
+        "directory": "./public",
+        "binding": "ASSETS",
+        "not_found_handling": "404-page",
+        // pages pass through worker/index.js, which fills in the contact
+        // details and fees Ive saved in the admin page
+        "run_worker_first": true
+    },
+
+    // login check for /admin (Zero Trust → Access → the app for this Worker).
+    // When the real domain gets its own Access app, add its AUD tag after a comma.
+    "vars": {
+        "ACCESS_TEAM_DOMAIN": "spring-darkness-426e.cloudflareaccess.com",
+        "ACCESS_AUD": "efcb050f40b613ff5eaee9b6a2e4af28d5601d07fc30faaa41528bddcfcf6330"
+    },
+
+    // keep other variables set in the dashboard (CONTACT_TO, …) instead of
+    // wiping them on every deploy
+    "keep_vars": true,
+
+    // storage for the concerts, fees and contact details (KV namespace "ive-events")
+    "kv_namespaces": [
+        { "binding": "EVENTS", "id": "f20953f340314c7cb650f8a60b688583" }
+    ]
+}
