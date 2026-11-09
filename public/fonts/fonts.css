@@ -1,0 +1,15 @@
+/* Self-hosted (no requests to Google servers — see cookies.html / privacy.html) */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 500;
+    font-display: swap;
+    src: url("Inter-var.woff2") format("woff2");
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("PlayfairDisplay-400i.woff2") format("woff2");
+}
