@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /api/
-
-Sitemap: https://ivesnijders.com/sitemap.xml
